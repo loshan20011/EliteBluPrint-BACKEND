@@ -3,10 +3,10 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
-import userRoutes from "./routes/user.route.js";
-import authRoutes from "./routes/auth.route.js";
-import forgotPasswordRoute from './routes/forgotPassword.js';
-import passwordRoutes from './routes/reset.route.js';
+import userRoutes from "./api/routes/user.route.js";
+import authRoutes from "./api/routes/auth.route.js";
+import forgotPasswordRoute from './api/routes/forgotPassword.js';
+import passwordRoutes from './api/routes/reset.route.js';
 
 
 // Load environment variables
