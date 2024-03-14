@@ -34,6 +34,10 @@ app.use('/forgotpassword', forgotPasswordRoute);
 
 app.use('/api/password', passwordRoutes);
 
+app.get('/', (req, res) => {
+  res.send('Hello, this is your Express API!');
+});
+
 // connect to the database
 mongoose
   .connect(process.env.MONGODB_URL)

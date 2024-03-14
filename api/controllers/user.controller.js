@@ -16,3 +16,18 @@ export const getArchitects = async (req, res, next) => {
     next(error);
   }
 };
+
+export const getUsers = async (req, res, next) => {
+  try {
+    const users = await User.find({}).select("name");
+
+    res.status(200).json({
+      users, // Include the users' data in the response
+      message: "Users retrieved successfully"
+    });
+  } catch (error) {
+    console.error(error.message);
+
+    next(error);
+  }
+}
