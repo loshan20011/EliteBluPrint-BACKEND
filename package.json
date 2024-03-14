@@ -5,8 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon api/index.js",
-    "start": "node api/index.js",
-    "build": "tsc"
+    "start": "node api/index.js"
   },
   "keywords": [],
   "author": "Loshan",
@@ -21,8 +20,5 @@
     "mongoose": "^8.1.1",
     "nodemailer": "^6.9.10",
     "nodemon": "^3.0.3"
-  },
-  "devDependencies": {
-    "typescript": "^5.4.2"
   }
 }
