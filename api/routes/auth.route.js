@@ -6,16 +6,18 @@ import {
   signout,
   userDelete,
   updateDetails,
+  validateSignup,
+  validateSignin,
 } from "../controllers/auth.controller.js";
 
 // Create a new router
 const router = express.Router();
 
 // Add a route to handle user signup
-router.post("/signup", signup);
+router.post("/signup",validateSignup, signup);
 
 // add a route to handle user login
-router.post("/signin", signin);
+router.post("/signin", validateSignin, signin);
 
 // add a route to handle user google authentication
 router.post("/google", google);

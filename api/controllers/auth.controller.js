@@ -4,7 +4,37 @@ import jwt from "jsonwebtoken";
 
 import nodemailer from "nodemailer";
 
+import { check, validationResult } from 'express-validator';
+
+export const validateSignup = [
+  check('username')
+    .notEmpty()
+    .withMessage('Username is required'),
+  check('email')
+    .isEmail()
+    .withMessage('Must be a valid email address'),
+  check('password')
+    .isLength({ min: 6 })
+    .withMessage('Password must be at least 6 characters long'),
+];
+
+export const validateSignin = [
+  check('email')
+    .isEmail()
+    .withMessage('Must be a valid email address'),
+  check('password')
+    .notEmpty()
+    .withMessage('Password is required'),
+];
+
+
+
+
 export const signup = async (req, res, next) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
   // Get the name, email, role and password from the request body
   const { username, email, role, password } = req.body;
 
@@ -76,6 +106,10 @@ export const signup = async (req, res, next) => {
 };
 
 export const signin = async (req, res, next) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
   // Get the email and password from the request body
   const { email, password } = req.body;
 
